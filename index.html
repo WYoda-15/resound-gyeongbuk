@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>RE:SOUND 자동 멈춤 시험</title>
+<style>
+  /* 노션 페이지와 같은 세로 흐름: 영상 → 설명 → 대표 사진 → 사진 3장 → 지도 링크 */
+  :root {
+    --bg: #ffffff;
+    --fg: #37352f;
+    --muted: #787774;
+    --line: #e9e9e7;
+    --ph: #f1f1ef;
+    --play: #2f7d4f;
+    --warn: #c4442b;
+    --bar: rgba(255, 255, 255, 0.94);
+    --sans: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #191919; --fg: #e6e6e4; --muted: #9b9a97; --line: #2f2f2f; --ph: #252525;
+      --play: #5fbf86; --warn: #ff7a5c; --bar: rgba(25, 25, 25, 0.94); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #191919; --fg: #e6e6e4; --muted: #9b9a97; --line: #2f2f2f; --ph: #252525;
+    --play: #5fbf86; --warn: #ff7a5c; --bar: rgba(25, 25, 25, 0.94); color-scheme: dark;
+  }
+
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 var(--sans); }
+  .page {
+    max-width: 720px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0 64px;
+    display: flex; flex-direction: column; gap: 40px;
+  }
+
+  .status {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+    background: var(--bar); border-bottom: 1px solid var(--line);
+    padding: 10px 0; font-size: 14px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  }
+  .status b { font-weight: 600; }
+  .status .now { color: var(--muted); }
+  .status .now.on { color: var(--play); font-weight: 600; }
+  .status .now.bad { color: var(--warn); font-weight: 600; }
+
+  .intro { display: flex; flex-direction: column; gap: 10px; }
+  .intro h1 { font-size: 30px; line-height: 1.25; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+  .intro p { margin: 0; color: var(--muted); }
+  .howto { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 2px; }
+
+  .place { display: flex; flex-direction: column; gap: 14px; }
+  .place header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .place h2 { font-size: 22px; margin: 0; }
+  .chip {
+    font-size: 12px; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--muted);
+  }
+  .chip.on { color: var(--play); border-color: var(--play); }
+
+  .embed { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; }
+  .embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  .desc { margin: 0; }
+  .desc small { display: block; color: var(--muted); font-size: 13px; }
+  .ph {
+    background: var(--ph); color: var(--muted); border-radius: 4px;
+    display: flex; align-items: center; justify-content: center; font-size: 13px;
+  }
+  .ph.main { aspect-ratio: 16 / 9; }
+  .row3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .row3 .ph { aspect-ratio: 4 / 3; }
+  .map { color: var(--muted); font-size: 14px; }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="status" role="status" aria-live="polite">
+    <b>재생 상태</b>
+    <span class="now" id="now">재생 중인 영상 없음</span>
+  </div>
+
+  <section class="intro">
+    <h1>RE:SOUND GYEONGBUK</h1>
+    <p>자동 멈춤 시험 페이지입니다. 노션에는 아직 적용하지 않았습니다. 사진과 설명은 회색 칸으로 대신했습니다.</p>
+    <ol class="howto">
+      <li>월영교 영상을 재생합니다.</li>
+      <li>아래로 내려가 체화정 영상을 재생합니다.</li>
+      <li>위 상태 줄이 '체화정 재생 중' 하나만 보이면 성공입니다.</li>
+      <li>다시 올라가 월영교가 멈춰 있는지 확인합니다.</li>
+    </ol>
+  </section>
+
+  <section class="place" data-name="월영교">
+    <header><h2>월영교</h2><span class="chip">대기</span></header>
+    <div class="embed"><iframe src="player.html?v=rIEqn6LLGQ4" title="월영교 현장음" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+    <p class="desc">장소 설명 자리<small>노션에서는 이 자리에 지금의 한·영 설명이 그대로 들어갑니다.</small></p>
+    <div class="ph main">대표 사진 (16:9)</div>
+    <div class="row3"><div class="ph">사진</div><div class="ph">사진</div><div class="ph">사진</div></div>
+    <span class="map">네이버 지도 링크 자리</span>
+  </section>
+  <hr>
+
+  <section class="place" data-name="체화정">
+    <header><h2>체화정</h2><span class="chip">대기</span></header>
+    <div class="embed"><iframe src="player.html?v=fEaof9vp3UI" title="체화정 현장음" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+    <p class="desc">장소 설명 자리<small>노션에서는 이 자리에 지금의 한·영 설명이 그대로 들어갑니다.</small></p>
+    <div class="ph main">대표 사진 (16:9)</div>
+    <div class="row3"><div class="ph">사진</div><div class="ph">사진</div><div class="ph">사진</div></div>
+    <span class="map">네이버 지도 링크 자리</span>
+  </section>
+  <hr>
+
+  <section class="place" data-name="하회마을">
+    <header><h2>하회마을</h2><span class="chip">대기</span></header>
+    <div class="embed"><iframe src="player.html?v=Jdw0B9QPUOg" title="하회마을 현장음" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+    <p class="desc">장소 설명 자리<small>노션에서는 이 자리에 지금의 한·영 설명이 그대로 들어갑니다.</small></p>
+    <div class="ph main">대표 사진 (16:9)</div>
+    <div class="row3"><div class="ph">사진</div><div class="ph">사진</div><div class="ph">사진</div></div>
+    <span class="map">네이버 지도 링크 자리</span>
+  </section>
+  <hr>
+
+  <section class="place" data-name="부용대">
+    <header><h2>부용대</h2><span class="chip">대기</span></header>
+    <div class="embed"><iframe src="player.html?v=ElUNMz-Oa1U" title="부용대 현장음" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+    <p class="desc">장소 설명 자리<small>노션에서는 이 자리에 지금의 한·영 설명이 그대로 들어갑니다.</small></p>
+    <div class="ph main">대표 사진 (16:9)</div>
+    <div class="row3"><div class="ph">사진</div><div class="ph">사진</div><div class="ph">사진</div></div>
+    <span class="map">네이버 지도 링크 자리</span>
+  </section>
+  <hr>
+
+  <section class="place" data-name="메이킹 필름">
+    <header><h2>메이킹 필름</h2><span class="chip">대기</span></header>
+    <div class="embed"><iframe src="player.html?v=r_gnLfABIok" title="메이킹 필름" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </section>
+
+  <section class="place" data-name="뮤직비디오">
+    <header><h2>뮤직비디오</h2><span class="chip">대기</span></header>
+    <div class="embed"><iframe src="player.html?v=NJjZ9IYkfNY" title="뮤직비디오" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </section>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var LABELS = { '-1': '대기', '0': '끝', '1': '재생 중', '2': '멈춤', '3': '불러오는 중', '5': '대기' };
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.place'));
+  var states = new Map();
+  var now = document.getElementById('now');
+
+  function sectionFor(source) {
+    for (var i = 0; i < sections.length; i++) {
+      var f = sections[i].querySelector('iframe');
+      if (f && f.contentWindow === source) return sections[i];
+    }
+    return null;
+  }
+
+  function render() {
+    var playing = sections.filter(function (s) { var v = states.get(s); return v === 1 || v === 3; });
+    now.classList.remove('on', 'bad');
+    if (playing.length === 0) {
+      now.textContent = '재생 중인 영상 없음';
+    } else if (playing.length === 1) {
+      now.textContent = playing[0].dataset.name + ' 재생 중';
+      now.classList.add('on');
+    } else {
+      now.textContent = playing.length + '개 동시 재생: ' + playing.map(function (s) { return s.dataset.name; }).join(', ') + ' (자동 멈춤 실패)';
+      now.classList.add('bad');
+    }
+  }
+
+  window.addEventListener('message', function (e) {
+    var d = e.data;
+    if (!d || typeof d !== 'object' || d.type !== 'resound-gb:state') return;
+    var sec = sectionFor(e.source);
+    if (!sec) return;
+    states.set(sec, d.state);
+    var chip = sec.querySelector('.chip');
+    chip.textContent = LABELS[String(d.state)] || '대기';
+    chip.classList.toggle('on', d.state === 1);
+    render();
+  });
+})();
+</script>
+</body>
+</html>
