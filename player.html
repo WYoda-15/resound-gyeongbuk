@@ -21,6 +21,8 @@
     aspect-ratio: 16 / 9;
     background: #000;
   }
+  /* ?fit=fill : 플레이어가 칸 전체를 채움 (영상은 유튜브가 검은 띠로 맞춤, 칸 전체가 터치됨) */
+  html.fill .frame { width: 100%; height: 100%; aspect-ratio: auto; }
   .frame > iframe, .frame > #player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .fallback {
     position: absolute; inset: 0; display: flex; flex-direction: column; gap: 8px;

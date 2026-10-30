@@ -16,6 +16,7 @@
   var query = new URLSearchParams(location.search);
   var videoId = (query.get('v') || document.documentElement.getAttribute('data-v') || '').trim();
   var startAt = parseInt(query.get('t') || '0', 10) || 0;
+  if (query.get('fit') === 'fill') document.documentElement.classList.add('fill');
   var frame = document.querySelector('.frame');
 
   function showFallback(message, withLink) {
