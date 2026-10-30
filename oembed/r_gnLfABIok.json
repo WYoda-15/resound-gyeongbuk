@@ -1,0 +1,13 @@
+{
+ "version": "1.0",
+ "type": "video",
+ "provider_name": "RE:SOUND GYEONGBUK",
+ "provider_url": "https://wyoda-15.github.io/resound-gyeongbuk/",
+ "title": "「KOREAN ETHOS」 메이킹 필름 · Making Film",
+ "width": 1280,
+ "height": 720,
+ "thumbnail_url": "https://i.ytimg.com/vi/r_gnLfABIok/hqdefault.jpg",
+ "thumbnail_width": 480,
+ "thumbnail_height": 360,
+ "html": "<iframe src=\"https://wyoda-15.github.io/resound-gyeongbuk/v/r_gnLfABIok.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; encrypted-media; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+}

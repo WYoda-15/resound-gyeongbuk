@@ -1,0 +1,13 @@
+{
+ "version": "1.0",
+ "type": "video",
+ "provider_name": "RE:SOUND GYEONGBUK",
+ "provider_url": "https://wyoda-15.github.io/resound-gyeongbuk/",
+ "title": "체화정 현장음 · Chehwajeong Pavilion",
+ "width": 1280,
+ "height": 720,
+ "thumbnail_url": "https://i.ytimg.com/vi/fEaof9vp3UI/hqdefault.jpg",
+ "thumbnail_width": 480,
+ "thumbnail_height": 360,
+ "html": "<iframe src=\"https://wyoda-15.github.io/resound-gyeongbuk/v/fEaof9vp3UI.html\" width=\"1280\" height=\"720\" frameborder=\"0\" allow=\"autoplay; encrypted-media; fullscreen; picture-in-picture\" allowfullscreen></iframe>"
+}
